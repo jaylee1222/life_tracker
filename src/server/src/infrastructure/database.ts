@@ -4,9 +4,11 @@ import { Sequelize } from "sequelize";
 export const sequelize: Sequelize = new Sequelize({
     database: 'test.db',
     dialect: 'sqlite',
-    storage: '../../database.sqlite'
+    storage: '../../database.sqlite',
+    logging: console.log
 });
 
+sequelize.sync({ force: true });
     // try {
     //     const connection = await sequelize.authenticate();
     //     console.log('Connection has been established successfully.');
