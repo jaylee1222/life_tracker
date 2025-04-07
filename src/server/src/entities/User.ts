@@ -10,12 +10,12 @@ interface UserAttributes {
         firstName: string;
         lastName: string;
         email: string;
-        assignedTasks: Task[];
-        assignedStories: Story[];
-        assignedEpics: Epic[];
-        createdTasks: Task[];
-        createdStories: Story[];
-        createdEpics: Epic[];
+        assignedTaskId: Task[];
+        assignedStoryId: Story[];
+        assignedEpicId: Epic[];
+        createdTaskId: Task[];
+        createdStoryId: Story[];
+        createdEpicId: Epic[];
 }
 
 interface UserCreationAttributes extends Omit<UserAttributes, 'id'> {}
@@ -40,22 +40,22 @@ export class User extends Model<UserAttributes, UserCreationAttributes> implemen
         email!: string;
 
         @HasMany(() => Task, { foreignKey: 'assignedTaskId' })
-        assignedTasks!: Task[];
+        assignedTaskId!: Task[];
 
         @HasMany(() => Story, { foreignKey: 'assignedStoryId' })
-        assignedStories!: Story[];
+        assignedStoryId!: Story[];
 
         @HasMany(() => Epic, { foreignKey: 'assignedEpicId' })
-        assignedEpics!: Epic[];
+        assignedEpicId!: Epic[];
 
         @HasMany(() => Task, { foreignKey: 'createdTaskId' })
-        createdTasks!: Task[];
+        createdTaskId!: Task[];
 
         @HasMany(() => Story, { foreignKey: 'createdStoryId' })
-        createdStories!: Story[];
+        createdStoryId!: Story[];
 
         @HasMany(() => Epic, { foreignKey: 'createdEpicId' })
-        createdEpics!: Epic[];
+        createdEpicId!: Epic[];
 
         // declare id: CreationOptional<number>;
         // declare firstName: string;

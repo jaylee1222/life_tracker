@@ -44,16 +44,16 @@ export class Epic extends Model<EpicAttributes, EpicCreationAttributes> implemen
     @Column(DataType.STRING)
     name!: string;
 
-    @HasMany(() => Story, 'id')
+    @HasMany(() => Story, { foreignKey: 'id' })
     stories!: Story[];
 
     @Column(DataType.STRING)
     description!: string;
 
-    @HasOne(() => User, 'id')
+    @HasOne(() => User, { foreignKey: 'createdTasks' })
     owner!: User;
 
-    @HasOne(() => User, 'id')
+    @HasOne(() => User, { foreignKey: 'assignedTasks' })
     worker!: User;
 
     @Column(DataType.INTEGER)

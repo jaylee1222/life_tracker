@@ -1,14 +1,14 @@
     // server/server.ts
     import express, { Request, Response } from 'express';
-    import { Sequelize } from "sequelize-typescript";
+    import { sequelize } from './src/infrastructure/database';
 
-    const sequelize: Sequelize = new Sequelize({
-        database: 'test.db',
-        dialect: 'sqlite',
-        storage: '../../database.sqlite',
-        logging: console.log
-    });
-
+    // const sequelize: Sequelize = new Sequelize({
+    //     database: 'test.db',
+    //     dialect: 'sqlite',
+    //     storage: '../../database.sqlite',
+    //     logging: console.log
+    // });
+    
     const app = express();
     const port = 3001;
     
@@ -18,6 +18,7 @@
     
     sequelize.authenticate().then(() => {
       console.log('Connection to database has been established successfully.');
+      sequelize.sync();
       app.listen(port, () => {
         console.log(`Server listening on port ${port}`);
       });

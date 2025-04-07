@@ -23,7 +23,7 @@ import { DataType, Model, Table, Column, PrimaryKey, AutoIncrement, HasMany, Has
 interface StoryAttributes {
     id: number;
     name: string;
-    taskId: Task;
+    tasks: Task[];
     description: string;
     owner: User;
     worker: User;
@@ -46,22 +46,22 @@ export class Story extends Model<StoryAttributes, StoryCreationAttributes> imple
     @Column(DataType.STRING)
     name!: string;
 
-    @HasMany(() => Task, 'id') 
-    taskId!: Task;
+    @HasMany(() => Task, { foreignKey: 'id' }) 
+    tasks!: Task[];
 
     @Column(DataType.STRING)
     description!: string;
 
-    @HasOne(() => User, 'id')
+    @HasOne(() => User, { foreignKey: 'createdStories' })
     owner!: User;
 
-    @HasOne(() => User, 'id')
+    @HasOne(() => User, { foreignKey: 'assignedStories' })
     worker!: User;
 
     @Column(DataType.INTEGER)
     progress!: Progress;
 
-    @BelongsTo(() => Epic, 'storyId')
+    @BelongsTo(() => Epic, { foreignKey: 'storyId' })
     parentEpic!: Epic;
 }
 // Story.init(

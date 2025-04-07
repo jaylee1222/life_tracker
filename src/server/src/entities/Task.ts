@@ -67,10 +67,10 @@ export class Task extends Model<TaskAttributes, TaskCreationAttributes> implemen
         @Column(DataType.STRING)
         description!: string;
 
-        @BelongsTo(() => User, { foreignKey: 'createdTasks' })
+        @BelongsTo(() => User, { foreignKey: 'creatorId' })
         owner!: User;
 
-        @BelongsTo(() => User, { foreignKey: 'assignedTasks' })
+        @BelongsTo(() => User, { foreignKey: 'assignedId' })
         worker!: User;
 
         @Column(DataType.INTEGER)
