@@ -1,6 +1,6 @@
     // server/server.ts
     import express, { Request, Response } from 'express';
-    import { Sequelize } from "sequelize";
+    import { Sequelize } from "sequelize-typescript";
 
     const sequelize: Sequelize = new Sequelize({
         database: 'test.db',

@@ -1,19 +1,18 @@
-import { Sequelize } from "sequelize";
+import { Sequelize } from "sequelize-typescript";
+import * as path from 'path';
+import { User } from '../entities/User';
+import { Epic } from '../entities/Epic';
+import { Story } from '../entities/Story';
+import { Task } from '../entities/Task'
 
 // Option 2: Passing parameters separately (sqlite)
 export const sequelize: Sequelize = new Sequelize({
-    database: 'test.db',
-    dialect: 'sqlite',
-    storage: '../../database.sqlite',
-    logging: console.log
+        database: 'test.db',
+        dialect: 'sqlite',
+        username: 'root',
+        password: '',
+        storage: 'database.sqlite',
+        logging: console.log,
+        // models: [path.join(__dirname, '..', 'entities')]
+        models: [Epic, Story, Task, User]
 });
-
-sequelize.sync({ force: true });
-    // try {
-    //     const connection = await sequelize.authenticate();
-    //     console.log('Connection has been established successfully.');
-    //     console.log(connection);
-    // } catch (error) {
-    //     console.error('Unable to connect to the database:', error);
-    // }
-    // return sequelize;
