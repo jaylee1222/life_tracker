@@ -52,16 +52,16 @@ export class Story extends Model<StoryAttributes, StoryCreationAttributes> imple
     @Column(DataType.STRING)
     description!: string;
 
-    @HasOne(() => User, { foreignKey: 'createdStories' })
+    @BelongsTo(() => User, { foreignKey: 'creatorId' })
     owner!: User;
 
-    @HasOne(() => User, { foreignKey: 'assignedStories' })
+    @BelongsTo(() => User, { foreignKey: 'assignedId' })
     worker!: User;
 
     @Column(DataType.INTEGER)
     progress!: Progress;
 
-    @BelongsTo(() => Epic, { foreignKey: 'storyId' })
+    @BelongsTo(() => Epic, { foreignKey: 'epicId' })
     parentEpic!: Epic;
 }
 // Story.init(

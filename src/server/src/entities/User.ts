@@ -39,22 +39,22 @@ export class User extends Model<UserAttributes, UserCreationAttributes> implemen
         @Column(DataType.STRING)
         email!: string;
 
-        @HasMany(() => Task, { foreignKey: 'assignedTaskId' })
+        @HasMany(() => Task, { foreignKey: 'id' })
         assignedTaskId!: Task[];
 
-        @HasMany(() => Story, { foreignKey: 'assignedStoryId' })
+        @HasMany(() => Story, { foreignKey: 'id' })
         assignedStoryId!: Story[];
 
-        @HasMany(() => Epic, { foreignKey: 'assignedEpicId' })
+        @HasMany(() => Epic, { foreignKey: 'id' })
         assignedEpicId!: Epic[];
 
-        @HasMany(() => Task, { foreignKey: 'createdTaskId' })
+        @HasMany(() => Task, { foreignKey: 'id' })
         createdTaskId!: Task[];
 
-        @HasMany(() => Story, { foreignKey: 'createdStoryId' })
+        @HasMany(() => Story, { foreignKey: 'id' })
         createdStoryId!: Story[];
 
-        @HasMany(() => Epic, { foreignKey: 'createdEpicId' })
+        @HasMany(() => Epic, { foreignKey: 'id' })
         createdEpicId!: Epic[];
 
         // declare id: CreationOptional<number>;

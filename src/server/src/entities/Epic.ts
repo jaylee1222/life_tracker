@@ -50,10 +50,10 @@ export class Epic extends Model<EpicAttributes, EpicCreationAttributes> implemen
     @Column(DataType.STRING)
     description!: string;
 
-    @HasOne(() => User, { foreignKey: 'createdTasks' })
+    @BelongsTo(() => User, { foreignKey: 'creatorId' })
     owner!: User;
 
-    @HasOne(() => User, { foreignKey: 'assignedTasks' })
+    @BelongsTo(() => User, { foreignKey: 'assignedId' })
     worker!: User;
 
     @Column(DataType.INTEGER)

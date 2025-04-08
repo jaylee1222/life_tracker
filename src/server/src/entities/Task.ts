@@ -76,7 +76,7 @@ export class Task extends Model<TaskAttributes, TaskCreationAttributes> implemen
         @Column(DataType.INTEGER)
         progress!: Progress;
 
-        @BelongsTo(() => Story, { foreignKey: 'taskId' })
+        @BelongsTo(() => Story, { foreignKey: 'storyId' })
         parentStory!: Story;
 
         // declare id: number;
